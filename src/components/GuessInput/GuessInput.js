@@ -9,6 +9,12 @@ function GuessInput({ handleSubmitGuesses, gameStatus }) {
     setTentativeGuessGuess("");
   }
 
+  const inputRef = React.useRef();
+
+  React.useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <>
       <form
@@ -18,6 +24,7 @@ function GuessInput({ handleSubmitGuesses, gameStatus }) {
       >
         <label htmlFor="guess-input">Enter guess:</label>
         <input
+          ref={inputRef}
           id="guess-input"
           type="text"
           pattern="[A-Z]{5,5}"
